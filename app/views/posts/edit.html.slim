@@ -1,0 +1,6 @@
+h1 レッスンの編集
+
+.nav.justify-content-end
+  = link_to 'レッスン一覧', posts_path, class: 'nav-link'
+
+= render partial: 'form', locals: { post: @post }
