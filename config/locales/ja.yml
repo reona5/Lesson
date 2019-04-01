@@ -1,3 +1,4 @@
+---
 ja:
   activerecord:
     errors:
@@ -6,6 +7,24 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      post: ポスト
+    attributes:
+      post:
+        id: ID
+        name: タイトル
+        description: 詳細
+        image: 画像
+        created_at: 登録日時
+        updated_at: 更新日時
+      user:
+        name: ユーザ名
+        email: メールアドレス
+        admin: 管理者権限
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        created_at: 登録日時
+        updated_at: 更新日時
   date:
     abbr_day_names:
       - 日
@@ -148,7 +167,7 @@ ja:
     currency:
       format:
         delimiter: ","
-        format: "%u%n"
+        format: "%n%u"
         precision: 0
         separator: "."
         significant: false

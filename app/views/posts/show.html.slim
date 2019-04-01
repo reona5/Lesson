@@ -1,0 +1,17 @@
+h1 レッスンの詳細
+
+.nav.justify-content-end
+  = link_to 'レッスン一覧', posts_path, class: 'nav-link'
+table.table.table-hover
+  tbody
+    tr
+      th= Post.human_attribute_name(:name)
+      td= @post.name
+    tr
+      th= Post.human_attribute_name(:description)
+      td= simple_format(h(@post.description), {}, sanitize: false, wrapper_tag: "div")
+    tr
+      th= Post.human_attribute_name(:created_at)
+      td= @post.created_at
+= link_to '編集', edit_post_path(post), class: 'btn btn-outline-warning mr-3'
+= link_to '削除', post, method: :delete, data: { confirm: "レッスン「#{post.name}」を削除します。よろしいですか？"}, class: 'btn btn-outline-warning'
