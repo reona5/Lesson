@@ -16,15 +16,23 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    post.update!(post_params)
-    redirect_to posts_url, notice: "レッスン「#{post.name}」を更新しました。"
+    @post = Post.find(params[:id])
+
+    if @post.update(post_params)
+      redirect_to @post, notice: "レッスン「#{post.name}」を更新しました。"
+    else
+      render :edit
+    end
   end
 
   def create
-    post = Post.new(post_params)
-    post.save!
-    redirect_to posts_url, notice: "レッスン「#{post.name}」を登録しました。"
+    @post = Post.new(post_params)
+
+    if @post.save
+      redirect_to @post, notice: "レッスン「#{@post.name}」を登録しました。"
+    else
+      render :new
+    end
   end
 
   def destroy
