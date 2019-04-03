@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :sign_in_required, only: [:index]
+
   def index
     @posts = Post.all
   end
