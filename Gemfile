@@ -55,6 +55,16 @@ gem 'omniauth-twitter'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
+# Rails で ER図を出してくれるツール。
+gem 'rails-erd'
+
+# View開発用
+gem "jquery-rails"
+gem "xray-rails"
+
+# RSpec用
+gem 'heavens_door'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
