@@ -3,7 +3,7 @@ class OmniauthCallbacksController < ApplicationController
         @user = User.from_omniauth(request.env["omniauth.auth"].except("extra"))
 
         if @user.persisted?
-            flash.notice = "ログインしました！"
+            flash.notice = "こんにちは、#{@user.username} さん！"
             sign_in_and_redirect @user
         else
             session["devise.user_attributes"] = @user.attributes

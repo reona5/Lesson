@@ -1,8 +1,8 @@
 p
-  | Welcome
-  = @username
-  | !
+  | こんにちは、
+  = @resource.username
+  | さん！
 p
-  | 以下のボタンでアカウント登録を完成させましょう！
+  | 以下のボタンでアカウントの有効化を完了しましょう！
 p
-  = link_to '登録', confirmation_url(@resource, confirmation_token: @token)
+  = link_to 'アカウント有効化', confirmation_url(@resource, confirmation_token: @token)
