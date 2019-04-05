@@ -1,10 +1,10 @@
 p
-  | Hello 
-  = @resource.email
-  | !
+  | こんにちは
+  = @resource.username
+  | さん！
 p
-  | Your account has been locked due to an excessive number of unsuccessful sign in attempts.
+  | あなたのアカウントは現在ロックされている可能性があります。
 p
-  | Click the link below to unlock your account:
+  | ロックを解除するためには以下のボタンを押して下さい。
 p
-  = link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token)
+  = link_to 'ロック解除', unlock_url(@resource, unlock_token: @token)

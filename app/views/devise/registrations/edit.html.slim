@@ -8,7 +8,7 @@ h2
     = f.email_field :email, autofocus: true, autocomplete: "email"
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     div
-      | Currently waiting confirmation for: 
+      | 変更確認用のメールアドレスを送信しましたので、変更を完了させて下さい。→
       = resource.unconfirmed_email
   .field
     = f.label :new_password
