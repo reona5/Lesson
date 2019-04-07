@@ -16,5 +16,5 @@ table.table.table-hover
     tr
       th= Post.human_attribute_name(:created_at)
       td= @post.created_at
-= link_to '編集', edit_post_path, class: 'btn btn-outline-warning mr-3'
-= link_to '削除', @post, method: :delete, data: { confirm: "レッスン「#{@post.name}」を削除します。よろしいですか？"}, class: 'btn btn-outline-warning'
+= link_to '編集', edit_post_path, class: 'btn btn-primary mr-3'
+= link_to '削除', @post, method: :delete, data: { confirm: "レッスン「#{@post.name}」を削除します。よろしいですか？"}, class: 'btn btn-primary'
