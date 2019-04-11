@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
-  before_action :sign_in_required, only: [:index]
+  before_action :set_post, only: %i[edit destroy update]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def show
@@ -13,13 +15,9 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  def edit
-    @post = Post.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @post = Post.find(params[:id])
-
     if @post.update(post_params)
       redirect_to @post, notice: "レッスン「#{post.name}」を更新しました。"
     else
@@ -28,7 +26,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
 
     if @post.save
       redirect_to @post, notice: "レッスン「#{@post.name}」を登録しました。"
@@ -38,9 +36,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find(params[:id])
-    post.destroy
-    redirect_to posts_url, notice: "レッスン「#{post.name}」を削除しました。"
+    @post.destroy
+    redirect_to posts_url, notice: "レッスン「#{@post.name}」を削除しました。"
   end
 
   private
@@ -48,5 +45,8 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:name, :description)
   end
-end
 
+  def set_post
+    @post = current_user.posts.find(params[:id])
+  end
+end
