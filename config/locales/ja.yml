@@ -14,6 +14,8 @@ ja:
         id: ID
         name: タイトル
         description: 詳細
+        lesson_at: 予定日時
+        place: 予定エリア
         image: 画像
         created_at: 登録日時
         updated_at: 更新日時
