@@ -10,11 +10,9 @@ html
   body
     .app-title.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
       .container
-        - if user_signed_in?
-          a.navbar-brand href="/posts"  Lesson
-        - else
-          a.navbar-brand href="/"  Lesson
+        a.navbar-brand href="/"  Lesson
         ul.navbar-nav.ml-auto
+          li.nav-item= link_to 'レッスン一覧', posts_path, class: 'nav-link'
           - if user_signed_in?
             li.nav-item= strong= link_to current_user.username, edit_user_registration_path, class: 'nav-link'
             li.nav-item= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link'

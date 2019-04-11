@@ -44,6 +44,9 @@ gem 'bootstrap'
 # 検索機能
 gem 'ransack'
 
+# URLクリックでリンク先遷移
+gem 'rails_autolink'
+
 #ページネーション機能
 gem 'kaminari'
 
