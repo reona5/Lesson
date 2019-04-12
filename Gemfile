@@ -50,17 +50,6 @@ gem 'rails_autolink'
 #ページネーション機能
 gem 'kaminari'
 
-# ユーザー管理機能
-gem 'devise'
-gem 'omniauth-twitter'
-
-# devise日本語化
-gem 'devise-i18n'
-gem 'devise-i18n-views'
-
-# jQuery
-gem 'jquery-rails'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -79,6 +68,14 @@ group :development do
   gem 'capistrano-bundler' # bundlerを使っているならこれも
   gem 'capistrano-rails' # Rails向けのプラグイン
   gem 'capistrano3-puma' # pumaを使う場合はこれも必要
+
+  # ユーザー管理機能
+  gem 'devise'
+  gem 'omniauth-twitter'
+
+  # devise日本語化
+  gem 'devise-i18n'
+  gem 'devise-i18n-views'
 
   # Rails で ER図を出してくれるツール。
   gem 'rails-erd'
@@ -104,9 +101,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-group :production do
-# Herokuへのデプロイ用
-  gem 'pg', '>= 0.18', '< 2.0'
-  gem 'rails_12factor'
-end
