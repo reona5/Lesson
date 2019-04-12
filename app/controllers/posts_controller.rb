@@ -12,14 +12,14 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.new
   end
 
   def edit; end
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: "レッスン「#{post.name}」を更新しました。"
+      redirect_to @post, notice: "レッスン「#{@post.name}」を更新しました。"
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:name, :description)
+    params.require(:post).permit(:name, :description, :lesson_at, :place)
   end
 
   def set_post

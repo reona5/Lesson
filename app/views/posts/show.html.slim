@@ -13,6 +13,12 @@ table.table.table-hover
     tr
       th= Post.human_attribute_name(:created_at)
       td= @post.created_at
+    tr
+      th= Post.human_attribute_name(:lesson_at)
+      td= @post.lesson_at
+    tr
+      th= Post.human_attribute_name(:place)
+      td= @post.place
 - if user_signed_in? && @post.user_id == current_user.id
   = link_to '編集', edit_post_path, class: 'btn btn-primary mr-3'
   = link_to '削除', @post, method: :delete, data: { confirm: "レッスン「#{@post.name}」を削除します。よろしいですか？"}, class: 'btn btn-primary'

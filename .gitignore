@@ -27,3 +27,5 @@
 /config/master.key
 
 /config/environments/development.rb
+
+/erd.pdf

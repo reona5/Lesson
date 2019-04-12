@@ -1,6 +1,7 @@
 h1 レッスン一覧
 
-= link_to 'レッスンを登録する', new_post_path, class: 'btn btn-primary'
+- if user_signed_in?
+  = link_to 'レッスンを登録する', new_post_path, class: 'btn btn-primary'
 
 .mb-3
 table.table.table-hover
