@@ -83,8 +83,13 @@ group :development do
   gem "jquery-rails"
   gem "xray-rails"
 
-  # RSpec用
+  # RSpec
+  # ブラウザ操作によるコード実装
   gem 'heavens_door'
+  # 高速化
+  gem 'spring-commands-rspec'
+  # フィクスチャの代替としてテストデータ作成を支援
+  gem 'factory_bot_rails', '~> 4.11'
 
   #デバッグ
   gem 'pry-byebug'
