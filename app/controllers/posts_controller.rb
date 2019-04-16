@@ -9,6 +9,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = Comment.new
   end
 
   def new
@@ -37,7 +39,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: "レッスン「#{@post.name}」を削除しました。"
+    head :no_content
   end
 
   private

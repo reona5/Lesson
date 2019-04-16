@@ -22,3 +22,14 @@ table.table.table-hover
 - if user_signed_in? && @post.user_id == current_user.id
   = link_to '編集', edit_post_path, class: 'btn btn-primary mr-3'
   = link_to '削除', @post, method: :delete, data: { confirm: "レッスン「#{@post.name}」を削除します。よろしいですか？"}, class: 'btn btn-primary'
+h3 コメント一覧
+- @comments.each do |comment|
+  div
+    a href="/users/#{@post.user.id}" = comment.user.username
+    = comment.content
+    br/
+  = form_for [@post,@comment] do |f|
+    = f.text_field :content
+    br/
+    f.submit 'コメントする'
+
