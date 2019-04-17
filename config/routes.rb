@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'likes/create'
+  get 'likes/destroy'
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
 
   root to: 'pages#index'
