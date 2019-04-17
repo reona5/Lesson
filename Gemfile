@@ -62,6 +62,14 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
 end
 
+  # ユーザー管理機能
+  gem 'devise'
+  gem 'omniauth-twitter'
+
+  # devise日本語化
+  gem 'devise-i18n'
+  gem 'devise-i18n-views'
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -74,13 +82,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  # ユーザー管理機能
-  gem 'devise'
-  gem 'omniauth-twitter'
-
-  # devise日本語化
-  gem 'devise-i18n'
-  gem 'devise-i18n-views'
 
   # Rails で ER図を出してくれるツール。
   gem 'rails-erd'
