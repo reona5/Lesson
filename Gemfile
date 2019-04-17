@@ -53,6 +53,14 @@ gem 'rails_autolink'
 # ページネーション機能
 gem 'kaminari'
 
+  # ユーザー管理機能
+  gem 'devise'
+  gem 'omniauth-twitter'
+
+  # devise日本語化
+  gem 'devise-i18n'
+  gem 'devise-i18n-views'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -74,13 +82,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  # ユーザー管理機能
-  gem 'devise'
-  gem 'omniauth-twitter'
-
-  # devise日本語化
-  gem 'devise-i18n'
-  gem 'devise-i18n-views'
 
   # Rails で ER図を出してくれるツール。
   gem 'rails-erd'
