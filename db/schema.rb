@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_062312) do
+ActiveRecord::Schema.define(version: 2019_04_16_122313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,10 +59,13 @@ ActiveRecord::Schema.define(version: 2019_04_16_062312) do
     t.string "provider"
     t.string "uid"
     t.string "username", null: false
+    t.bigint "posts_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["posts_id"], name: "index_users_on_posts_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "users", "posts", column: "posts_id"
 end

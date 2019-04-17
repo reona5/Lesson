@@ -41,6 +41,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # View関連
 gem 'bootstrap'
 gem 'html2slim'
+gem 'jquery-rails'
 gem 'slim-rails'
 
 # 検索機能
@@ -85,7 +86,6 @@ group :development do
   gem 'rails-erd'
 
   # View開発用
-  gem 'jquery-rails'
   gem 'xray-rails'
 
   # RSpec

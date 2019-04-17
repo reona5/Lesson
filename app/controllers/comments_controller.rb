@@ -2,20 +2,16 @@
 
 class CommentsController < ApplicationController
   def create
+    @post = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
-    @comment.user_id = current_user.user_id
-    if @comment.save
-      redirect_to posts_url, notice: "レッスン「#{@post.name}」にコメントを投稿しました。"
-    else
-      render :show
-    end
+    @comment.post_id = @post.id
+    @comment.user_id = current_user.id
+    render :index if @comment.save
   end
 
   def destroy
     @comment = Comment.find(params[:id])
-    if @comment.destroy
-      render :index
-    end
+    render :index if @comment.destroy
   end
 
   private
