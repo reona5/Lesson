@@ -28,5 +28,6 @@ module Lesson
         helper_specs: false,
         routing_specs: false
     end
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end

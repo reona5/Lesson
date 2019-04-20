@@ -1,20 +1,22 @@
 class LikesController < ApplicationController
+  before_action :set_post
+
   def create
-    @post = Post.find(params[:post_id])
-    @like = current_user.likes.find_by(post: @post)
-    toggle
-    @post_reload
+    @like = Like.create(user_id: current_user.id, post_id: params[:post_id])
+    @likes = Like.where(post_id: params[:post_id])
+    @post.reload
+  end
+
+  def destroy
+    like = Like.find_by(user_id: current_user.id, post_id: params[:post_id])
+    like.destroy
+    @likes = Like.where(post_id: params[:post_id])
+    @post.reload
   end
 
   private
 
-  def toggle
-    if @like
-      return head :unprocessable_entity unless @like.destroy
-    else
-      @like = current_user.likes.build(post: @post)
-      return head :unprocessable_entity unless @like.save
-    end
-    head :ok
+  def set_post
+    @post = Post.find(params[:post_id])
   end
 end

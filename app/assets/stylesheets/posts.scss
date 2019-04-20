@@ -7,3 +7,19 @@ body {
   padding-top: 100px;
   margin-bottom: 100px;
 }
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: silver;
+}
+
+a .vertical_like {
+  color: royalblue
+}
+
+a .vertical_like:hover {
+  color: orangered
+}

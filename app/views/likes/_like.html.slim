@@ -1,7 +1,24 @@
 - if user_signed_in?
-  - unless @post.like?(current_user)
-    a#link-mark.btn.btn-primary.text-white data-post_id="#{@post.id}" #{@post.likes_count} いいね！
+  - unless post.like_user(current_user.id).blank?
+    = link_to post_like_path(post_id: post.id, id: post.likes[0].id), method: :delete, remote: true do
+      .vertical_like
+        i.fas.fa-thumbs-up.fa-2x.fa-fw
+        span.red-text
+          = post.likes_count
   - else
-    a#link-mark.btn.btn-danger.text-white data-post_id="#{@post.id}" #{@post.likes_count} いいね！を取り消す
-
-= javascript_include_tag('like')
+    = link_to post_likes_path(post.id), method: :post, remote: true do
+      .vertical_like
+        i.far.fa-thumbs-up.fa-2x.fa-fw
+        span
+          = post.likes_count
+- else
+  - if post.likes_count > 0
+    .vertical_like
+      i.fas.fa-thumbs-up.fa-2x.fa-fw
+      span.red-text
+        = post.likes_count
+  - else
+    .vertical_like
+      i.far.fa-thumbs-up.fa-2x.fa-fw
+      span
+        = post.likes_count

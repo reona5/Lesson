@@ -9,10 +9,9 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :like_users, through: :likes, source: :user
 
   # 投稿にいいねがついているかどうか
-  def like?(user)
-    like_users.include?(user)
+  def like_user(user_id)
+    likes.find_by(user_id: user_id)
   end
 end
