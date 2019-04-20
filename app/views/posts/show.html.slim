@@ -2,8 +2,14 @@ h1 レッスンの詳細
 
 .nav.justify-content-end
   = link_to 'レッスン一覧', posts_path, class: 'nav-link'
+  / いいね表示
+  div id= "likes_buttons_#{@post.id}"
+    = render partial: 'likes/like', locals: { post: @post, likes: @likes }
 table.table.table-hover
   tbody
+    tr
+      th= User.human_attribute_name(:username)
+      td= @post.user.username
     tr
       th= Post.human_attribute_name(:name)
       td= @post.name
@@ -24,10 +30,10 @@ table.table.table-hover
   = link_to '削除', @post, method: :delete, data: { confirm: "レッスン「#{@post.name}」を削除します。よろしいですか？"}, class: 'btn btn-outline-primary'
 div
   br
-  #comments_area
+  /! 投稿されたコメント一覧を詳細ページに表示するためのrender
+  = render partial: 'comments/index', locals: { comments: @comments }
+  div id= "comments_area"
   - if user_signed_in?
-    /! 投稿されたコメント一覧を詳細ページに表示するためのrender
-    = render partial: 'comments/index', locals: { comments: @comments }
     br
     /! コメント入力欄を詳細ページに表示するためのrender
     = render partial: 'comments/form', locals: { comment: @comment, post: @post }

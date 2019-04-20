@@ -5,12 +5,15 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(created_at: :desc)
+    @post = Post.new
+    @user = User.find_by(id: @post.user_id)
   end
 
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments
+    @user = User.find_by(id: @post.user_id)
   end
 
   def new
