@@ -8,6 +8,9 @@
     = f.label :name
     = f.text_field :name, class: 'form-control', id: 'post_name', placeholder: 'Rubyの基礎を教えます！'
   .form-group
+    = f.label :tag_list
+    ul#post_tag_list.form-control name="tag_list" placeholder='内容に関連したタグをスペース区切りで入力してください。（例: Ruby Python3）' value="#{@post.tag_list.join(' ')}"
+  .form-group
     = f.label :description
     = f.text_area :description, rows: 10, class: 'form-control', id: 'post_description'
     / カレンダーにしたい

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root to: 'pages#index'
 
   resources :pages, only: %i[index show]
-  # commentsはpostsと親子関係である
+  # 親子関係
   resources :posts do
     resources :comments
     resources :likes, only: [:create, :destroy]

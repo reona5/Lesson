@@ -42,6 +42,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'html2slim'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'slim-rails'
 
 # 検索機能
@@ -63,6 +64,9 @@ gem 'kaminari'
 
   # 関連テーブル（いいね！）のカウント
   gem 'counter_culture'
+
+  # タグ機能
+  gem 'acts-as-taggable-on', '~> 6.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
