@@ -7,6 +7,9 @@ class PostsController < ApplicationController
     @posts = Post.all.order(created_at: :desc)
     @post = Post.new
     @user = User.find_by(id: @post.user_id)
+    if params[:tag_name]
+      @posts = @posts.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def show
@@ -48,7 +51,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:name, :description, :lesson_at, :place)
+    params.require(:post).permit(:name, :description, :lesson_at, :place, :tag_list)
   end
 
   def set_post

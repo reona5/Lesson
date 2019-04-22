@@ -42,6 +42,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'html2slim'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'slim-rails'
 
 # 検索機能
@@ -63,6 +64,9 @@ gem 'kaminari'
 
   # 関連テーブル（いいね！）のカウント
   gem 'counter_culture'
+
+  # タグ機能
+  gem 'acts-as-taggable-on', '~> 6.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -89,6 +93,8 @@ group :development do
   gem 'capistrano' # 本体
   gem 'capistrano-bundler' # bundlerを使っているならこれも
   gem 'capistrano-rails' # Rails向けのプラグイン
+  gem 'capistrano-rbenv'
+  gem 'capistrano-yarn'
   gem 'capistrano3-puma' # pumaを使う場合はこれも必要
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
