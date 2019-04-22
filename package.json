@@ -1,5 +1,8 @@
 {
   "name": "Lesson",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.4.0",
+    "taggle": "^1.14.1"
+  }
 }

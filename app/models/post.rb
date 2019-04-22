@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   validates :description, presence: true
   validates :lesson_at, presence: true
   validates :place, presence: true
+  validates :tag_list, presence: true
 
   belongs_to :user
   has_many :comments, dependent: :destroy

@@ -93,6 +93,8 @@ group :development do
   gem 'capistrano' # 本体
   gem 'capistrano-bundler' # bundlerを使っているならこれも
   gem 'capistrano-rails' # Rails向けのプラグイン
+  gem 'capistrano-rbenv'
+  gem 'capistrano-yarn'
   gem 'capistrano3-puma' # pumaを使う場合はこれも必要
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'

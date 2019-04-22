@@ -9,6 +9,7 @@ table.table.table-hover
     tr
       th= Post.human_attribute_name(:name)
       th= User.human_attribute_name(:username)
+      th= Post.human_attribute_name(:tag_list)
       th= Post.human_attribute_name(:created_at)
       th=
       th=
@@ -17,6 +18,7 @@ table.table.table-hover
       tr
         td= link_to post.name, post
         td= link_to post.user.username, page_path(post.user_id)
+        td= render partial: 'posts/tag_list', locals: { tag_list: post.tag_list }
         td= post.created_at
         / いいね表示
         td
