@@ -16,6 +16,7 @@ class User < ApplicationRecord
       user.provider = auth['provider']
       user.uid = auth['uid']
       user.username = auth['info']['nickname']
+      user.image_url = auth['info']['image']
     end
   end
 
@@ -29,7 +30,6 @@ class User < ApplicationRecord
     end
   end
 
-  # remember_me機能有効化
   def remember_me
     true
   end

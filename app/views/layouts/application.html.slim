@@ -14,13 +14,14 @@ html
       .container
         a.navbar-brand href="/"  Lesson
         ul.navbar-nav.ml-auto
-          li.nav-item= link_to 'レッスン一覧', posts_path, class: 'nav-link'
           - if user_signed_in?
-            li.nav-item= strong= link_to current_user.username, edit_user_registration_path, class: 'nav-link'
+            li.nav-item= strong= link_to current_user.image_url, edit_user_registration_path, class: 'nav-link'
             li.nav-item= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link'
+            li.nav-item= link_to 'レッスン一覧', posts_path, class: 'nav-link'
           - else
             li.nav-item= link_to '新規登録', new_user_registration_path, class: 'nav-link'
             li.nav-item= link_to 'ログイン', new_user_session_path, class: 'nav-link'
+            li.nav-item= link_to 'レッスン一覧', posts_path, class: 'nav-link'
     .container
       - if flash.notice.present?
         .alert.alert-success= flash.notice
