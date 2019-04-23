@@ -11,12 +11,14 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  mount_uploader :avatar, AvatarUploader
+
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth['provider'], uid: auth['uid']) do |user|
       user.provider = auth['provider']
       user.uid = auth['uid']
       user.username = auth['info']['nickname']
-      user.image_url = auth['info']['image']
+      user.remote_avatar_url = "https://twitter.com/#{user.uid}/profile_image?size=original"
     end
   end
 

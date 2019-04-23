@@ -23,3 +23,19 @@ a .vertical_like {
 a .vertical_like:hover {
   color: orangered
 }
+
+.circle-avatar.field {
+  text-align: center;
+}
+
+.circle-avatar.field img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#img_field:hover {
+  transition: 0.5s ease-out;
+  opacity: 0.5;
+}
