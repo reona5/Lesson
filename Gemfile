@@ -70,6 +70,7 @@ gem 'kaminari'
   # プロフィール画像
   gem 'carrierwave'
   gem 'mini_magick'
+  gem 'fog'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -80,13 +81,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
 end
 
-  # ユーザー管理機能
-  gem 'devise'
-  gem 'omniauth-twitter'
-
-  # devise日本語化
-  gem 'devise-i18n'
-  gem 'devise-i18n-views'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
