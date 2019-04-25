@@ -17,4 +17,13 @@ class Post < ApplicationRecord
   def like_user(user_id)
     likes.find_by(user_id: user_id)
   end
+
+#   # ransack　検索できるカラムの制限
+#   def .ransackable_attributes(auth_object = nil)
+#     %w[tags_name]
+#   end
+
+#   def self.ransackable_associations(auth_object = nil)
+#     []
+#   end
 end
