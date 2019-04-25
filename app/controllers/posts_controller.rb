@@ -4,11 +4,11 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit destroy update]
 
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
     @post = Post.new
     @user = User.find_by(id: @post.user_id)
     if params[:tag_name]
-      @posts = @posts.tagged_with("#{params[:tag_name]}")
+      @posts = @posts.tagged_with(params[:tag_name])
     end
   end
 
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: "レッスン「#{@post.name}」を更新しました。"
+      redirect_to @post, notice: "レッスン「#{@post.name}」を更新しました。"\
     else
       render :edit
     end

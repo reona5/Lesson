@@ -3,10 +3,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :tags_search
 
   def after_sign_in_path_for(_resource)
     flash.notice = "こんにちは、#{current_user.username} さん！"
     posts_path
+  end
+
+  def tags_search
+    @q = Post.ransack(params[:q])
   end
 
   private

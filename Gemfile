@@ -42,7 +42,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'html2slim'
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
 gem 'slim-rails'
 
 # 検索機能
@@ -102,7 +101,6 @@ group :development do
   gem 'capistrano3-puma' # pumaを使う場合はこれも必要
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-
 
   # Rails で ER図を出してくれるツール。
   gem 'rails-erd'
