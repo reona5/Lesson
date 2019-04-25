@@ -4,6 +4,8 @@ br
   = link_to 'レッスンを登録する', new_post_path, class: 'btn btn-primary'
 
 .mb-3
+  = paginate @posts
+  = page_entries_info @posts
 table.table.table-hover
   thead.thead-default
     tr
