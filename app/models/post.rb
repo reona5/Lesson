@@ -13,7 +13,7 @@ class Post < ApplicationRecord
 
   acts_as_taggable
 
-  # 投稿にいいねがついているかどうか
+  # ユーザが持っているいいねを探すメソッド
   def like_user(user_id)
     likes.find_by(user_id: user_id)
   end
