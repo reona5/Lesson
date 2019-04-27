@@ -53,23 +53,23 @@ gem 'rails_autolink'
 # ページネーション機能
 gem 'kaminari'
 
-  # ユーザー管理機能
-  gem 'devise'
-  gem 'omniauth-twitter'
+# ユーザー管理機能
+gem 'devise'
+gem 'omniauth-twitter'
 
-  # devise日本語化
-  gem 'devise-i18n'
-  gem 'devise-i18n-views'
+# devise日本語化
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
-  # 関連テーブル（いいね！）のカウント
-  gem 'counter_culture'
+# 関連テーブル（いいね！）のカウント
+gem 'counter_culture'
 
-  # タグ機能
-  gem 'acts-as-taggable-on', '~> 6.0'
+# タグ機能
+gem 'acts-as-taggable-on', '~> 6.0'
 
-  # プロフィール画像
-  gem 'carrierwave'
-  gem 'mini_magick'
+# プロフィール画像
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -79,14 +79,6 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.7'
 end
-
-  # ユーザー管理機能
-  gem 'devise'
-  gem 'omniauth-twitter'
-
-  # devise日本語化
-  gem 'devise-i18n'
-  gem 'devise-i18n-views'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
