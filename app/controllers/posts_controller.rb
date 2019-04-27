@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit destroy update]
 
   def index
-    @posts = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
+    @posts = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(5)
     @post = Post.new
     @user = User.find_by(id: @post.user_id)
     if params[:tag_name]

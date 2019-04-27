@@ -17,16 +17,14 @@ html
           - if user_signed_in?
             li.nav-item= strong= link_to current_user.username, edit_user_registration_path, class: 'nav-link'
             li.nav-item= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link'
-            li.nav-item= link_to 'レッスン一覧', posts_path, class: 'nav-link'
           - else
             li.nav-item= link_to '新規登録', new_user_registration_path, class: 'nav-link'
             li.nav-item= link_to 'ログイン', new_user_session_path, class: 'nav-link'
-            li.nav-item= link_to 'レッスン一覧', posts_path, class: 'nav-link'
         = search_form_for @q, class: 'form-inline.my-2.my-lg-0' do |f|
           .form-group.row.m-auto
             = f.search_field :tags_name_cont, class: "col-sm-8 form-control mr-sm-2", placeholder: 'タグで検索'
             .col-sm-1
-              = f.submit class: "btn btn-outline-primary my-2 my-sm-0"
+              = f.submit class: "btn btn-outline-info my-2 my-sm-0"
     .container
       - if flash.notice.present?
         .alert.alert-success= flash.notice

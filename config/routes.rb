@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
 
-  root to: 'pages#index'
+  root to: 'posts#index'
 
   resources :pages, only: %i[index show]
   # 親子関係
