@@ -1,34 +1,75 @@
-h1 レッスン一覧
-br
-- if user_signed_in?
-  = link_to 'レッスンを登録する', new_post_path, class: 'btn btn-primary'
+.container
+  .row
+    .col-12
+        .shadow-lg.p-3.mb-5.bg-dark.rounded.text-center
+          .container.p-4
+            p.text-white.mb-2
+              |Lessonはオフライン上での授業の場を提供するサービスです。
+            br
+            = link_to "Lesson に登録する", new_user_registration_path, class: 'btn btn-outline-light'
 
-.mb-3
-  = paginate @posts
-  = page_entries_info @posts
-table.table.table-hover
-  thead.thead-default
-    tr
-      th= Post.human_attribute_name(:name)
-      th= User.human_attribute_name(:username)
-      th= Post.human_attribute_name(:tag_list)
-      th= Post.human_attribute_name(:created_at)
-      th=
-      th=
-  tbody
-    - @posts.each do |post|
-      tr
-        td= link_to post.name, post
-        td= link_to post.user.username, page_path(post.user_id)
-        td= render partial: 'posts/tag_list', locals: { tag_list: post.tag_list }
-        td= post.created_at
-        / いいね表示
-        td
-          div id= "likes_buttons_#{post.id}"
-            = render partial: 'likes/like', locals: { post: post, likes: @likes }
-        - if user_signed_in? && post.user_id == current_user.id
-          td
-            = link_to '編集', edit_post_path(post), class: 'btn btn-primary mr-3'
-            = link_to '削除', post, method: :delete, remote: true, data: { confirm: "レッスン「#{post.name}」を削除します。よろしいですか？"}, class: 'btn btn-outline-primary delete'
-        - else
-          td
+    .col-8.border-right
+      h3.border-bottom ピックアップ記事
+      br
+      - if user_signed_in?
+        = link_to 'レッスンを登録する', new_post_path, class: 'btn btn-primary mb-3'
+      .mb-3
+        = paginate @posts
+        = page_entries_info @posts
+        - @posts.each do |post|
+          .posts_container.py-3
+            .flex_container_main.py-2
+              .name
+                = link_to post.name, post, class: 'font-weight-bold'
+              .tag_list
+                = render partial: 'posts/tag_list', locals: { tag_list: post.tag_list }
+              .description
+                = post.description
+            .flex_container_sub
+              .circle-avatar.index-field
+                - if post.user.avatar?
+                  = image_tag post.user.avatar.to_s
+                - else
+                  = image_tag "no_avatar.png"
+                  / いいね表示
+              div.pl-3 id= "likes_buttons_#{post.id}"
+                = render partial: 'likes/like', locals: { post: post, likes: @likes }
+              .item.ml-auto
+                - if user_signed_in? && post.user_id == current_user.id
+                  .post_edit
+                    = link_to '編集', edit_post_path(post), class: 'btn btn-primary mr-1'
+                    = link_to '削除', post, method: :delete, remote: true, data: { confirm: "レッスン「#{post.name}」を削除します。よろしいですか？"}, class: 'btn btn-outline-primary delete'
+            .flex_container_sub
+              .username
+                = link_to post.user.username, page_path(post.user_id)
+              .created_at.ml-auto
+                = post.created_at
+
+        / table.table.table-hover
+          / thead.thead-default
+            / tr
+            /   th= Post.human_attribute_name(:name)
+            /   th= User.human_attribute_name(:username)
+            /   th= Post.human_attribute_name(:tag_list)
+            /   th= Post.human_attribute_name(:created_at)
+            /   th=
+            /   th=
+          tbody
+              - @posts.each do |post|
+                tr
+                  td= link_to post.name, post
+                  td= link_to post.user.username, page_path(post.user_id)
+                  td= render partial: 'posts/tag_list', locals: { tag_list: post.tag_list }
+                  td= post.created_at
+                  / いいね表示
+                  td
+                    div id= "likes_buttons_#{post.id}"
+                      = render partial: 'likes/like', locals: { post: post, likes: @likes }
+                  - if user_signed_in? && post.user_id == current_user.id
+                    td
+                      = link_to '編集', edit_post_path(post), class: 'btn btn-primary mr-3'
+                      = link_to '削除', post, method: :delete, remote: true, data: { confirm: "レッスン「#{post.name}」を削除します。よろしいですか？"}, class: 'btn btn-outline-primary delete'
+                  - else
+                    td
+    .col-4
+      h4.border-bottom タグ一覧
