@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_23_020158) do
+ActiveRecord::Schema.define(version: 2019_04_28_071435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_04_23_020158) do
     t.datetime "lesson_at", null: false
     t.string "place", null: false
     t.integer "likes_count", default: 0, null: false
+    t.integer "comments_count", default: 0, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -94,10 +95,11 @@ ActiveRecord::Schema.define(version: 2019_04_23_020158) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
-    t.string "username", null: false
+    t.string "username", limit: 20, null: false
     t.bigint "posts_id"
     t.string "image_url"
     t.string "avatar"
+    t.text "description"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["posts_id"], name: "index_users_on_posts_id"
