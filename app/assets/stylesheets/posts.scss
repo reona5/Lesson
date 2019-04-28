@@ -57,7 +57,16 @@ a .vertical_like:hover {
 	flex-wrap: nowrap;
 	justify-content: center;
 	align-items: flex-start;
-	align-content: space-around;
+  align-content: space-around;
+  overflow: hidden;
+  width: 100%;
+}
+
+.description {
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .flex_container_sub {

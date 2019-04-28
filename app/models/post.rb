@@ -2,7 +2,7 @@
 
 class Post < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
-  validates :description, presence: true
+  validates :description, presence: true, length: { maximum: 1000 }
   validates :lesson_at, presence: true
   validates :place, presence: true
   validates :tag_list, presence: true

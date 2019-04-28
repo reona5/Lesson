@@ -20,7 +20,8 @@ ja:
     attributes:
       user:
         current_password: "旧パスワード"
-        username: ユーザ名
+        username: "ユーザ名"
+        description: "詳細"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
