@@ -6,12 +6,16 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
     @comment.user_id = current_user.id
-    render :index if @comment.save
+    if @comment.save
+      render :index
+    end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
-    render :index if @comment.destroy
+    if @comment.destroy
+      render :index
+    end
   end
 
   private
