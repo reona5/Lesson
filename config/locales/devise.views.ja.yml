@@ -21,7 +21,7 @@ ja:
       user:
         current_password: "現在のパスワード"
         username: "ユーザ名"
-        description: "詳細"
+        description: "プロフィール"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"

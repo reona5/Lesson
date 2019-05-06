@@ -22,7 +22,7 @@ html
         a.navbar-brand href="/"  Lesson
         ul.navbar-nav.mr-auto
           - if user_signed_in?
-            li.nav-item= strong= link_to current_user.username, edit_user_registration_path, class: 'nav-link'
+            / li.nav-item= strong= link_to current_user.username, edit_user_registration_path, class: 'nav-link'
             li.nav-item= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link'
           - else
             li.nav-item= link_to '新規登録', new_user_registration_path, class: 'nav-link'
@@ -32,6 +32,12 @@ html
             = f.search_field :tags_name_cont, class: "col-sm-8 form-control mr-sm-2", placeholder: 'タグで検索'
             .col-sm-1
               = f.submit class: "btn btn-outline-info my-2 my-sm-0"
+        .circle-avatar.index-field
+          = link_to edit_user_registration_path
+            - if user_signed_in? && current_user.avatar?
+              = image_tag current_user.avatar.to_s
+            - elsif user_signed_in?
+              = image_tag "no_avatar.png"
     .container.header
       - if flash.notice.present?
         .alert.alert-success= flash.notice
