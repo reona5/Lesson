@@ -19,7 +19,7 @@ ja:
               confirmation: "が内容とあっていません。"
     attributes:
       user:
-        current_password: "旧パスワード"
+        current_password: "現在のパスワード"
         username: "ユーザ名"
         description: "詳細"
         email: "メールアドレス"

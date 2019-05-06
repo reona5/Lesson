@@ -29,3 +29,6 @@
 /config/environments/development.rb
 
 /erd.pdf
+
+/config/initializers/devise.rb
+/config/initializers/omniauth.rb

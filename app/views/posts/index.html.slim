@@ -15,8 +15,6 @@
       - if user_signed_in?
         = link_to 'レッスンを登録する', new_post_path, class: 'btn btn-info mb-3'
       .mb-3
-        = paginate @posts
-        = page_entries_info @posts
         - @posts.each do |post|
           .posts_container.py-3
             .flex_container_main.py-2
@@ -45,6 +43,9 @@
                 = link_to post.user.username, page_path(post.user_id)
               .created_at.ml-auto
                 = post.created_at
+        .container.mt-3
+        = paginate @posts
+        = page_entries_info @posts
     .col-4
       h4.border-bottom.mb-3 タグ一覧
       - @posts.each do |post|
