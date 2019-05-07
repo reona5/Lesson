@@ -8,12 +8,12 @@
             - unless user_signed_in?
               br
               = link_to "Lesson に登録する", new_user_registration_path, class: 'btn btn-outline-info'
-
+    .col-12
+      - if user_signed_in?
+        = link_to 'レッスンを投稿する', new_post_path, class: 'btn btn-info mb-3'
     .col-8.border-right
       h3.border-bottom ピックアップ記事
       br
-      - if user_signed_in?
-        = link_to 'レッスンを登録する', new_post_path, class: 'btn btn-info mb-3'
       .mb-3
         - @posts.each do |post|
           .posts_container.py-3

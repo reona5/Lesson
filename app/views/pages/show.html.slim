@@ -10,10 +10,10 @@
       table.table.table-hover
         tbody
           tr
-            th= User.human_attribute_name(:username)
+            / th= User.human_attribute_name(:username)
             td= @user.username
           tr
-            th= User.human_attribute_name(:description)
+            / th= User.human_attribute_name(:description)
             td= @user.description
     .col-8.border-left
       h3.border-bottom #{@user.username} さんの投稿

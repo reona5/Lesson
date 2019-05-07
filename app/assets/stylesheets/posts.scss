@@ -1,9 +1,13 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  box-sizing: border-box;
+}
 
 body {
   height: 100%;
+  width: 100%;
   margin-top: 100px;
   margin-bottom: 100px;
   line-height: 1.5;
@@ -22,6 +26,10 @@ a:hover {
 }
 
 .vertical_like {
+  color: #15A2B8;
+}
+
+.vertical_liked {
   color: #15A2B8;
 }
 
