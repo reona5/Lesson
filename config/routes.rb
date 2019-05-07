@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: 'posts#index'
 
   resources :pages, only: %i[index show]
+  resources :about, only: [:index]
   # 親子関係
   resources :posts do
     resources :comments

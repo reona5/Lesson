@@ -29,21 +29,24 @@
           = resource.unconfirmed_email
       br
       .field
-        = f.password_field :password, autocomplete: "new-password", placeholder: "パスワード", class: "form-control"
+        = f.text_area :description, rows: 7, placeholder: "プロフィール", class: "form-control"
       br
       .field
-        = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード（確認用）", class: "form-control"
+        = f.password_field :password, placeholder: "パスワード", class: "form-control"
       br
       .field
-        = f.password_field :current_password, autocomplete: "current-password", placeholder: "旧パスワード", class: "form-control"
+        = f.password_field :password_confirmation, placeholder: "パスワード（確認用）", class: "form-control"
+      br
+      .field
+        = f.password_field :current_password, placeholder: "現在のパスワード", class: "form-control"
       br
       .actions.my-3
-        = f.submit "変更する", class: "btn btn-primary w-100"
+        = f.submit "変更する", class: "btn btn-info w-100"
       br
     h4.text-center
       | 退会はこちら
     p
       | 全てのサービスは利用できなくなります。よろしければ退会ボタンを押してください。
     br
-      = button_to "退会する", registration_path(resource_name), data: { confirm: "本当によろしいですか？" }, method: :delete, class: "btn btn-primary w-100"
+      = button_to "退会する", registration_path(resource_name), data: { confirm: "本当によろしいですか？" }, method: :delete, class: "btn btn-outline-info w-100"
     = link_to "レッスン一覧に戻る", :back

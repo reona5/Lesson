@@ -55,6 +55,7 @@ gem 'kaminari'
 
 # ユーザー管理機能
 gem 'devise'
+gem 'omniauth'
 gem 'omniauth-twitter'
 
 # devise日本語化

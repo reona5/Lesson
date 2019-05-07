@@ -1,27 +1,52 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  box-sizing: border-box;
+}
 
 body {
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   margin-top: 100px;
   margin-bottom: 100px;
+  line-height: 1.5;
+  letter-spacing: .1em;
+  text-align: justify;
+  color: #546E7A;
 }
 
 a {
-  color: black;
+  color: #546E7A
 }
 
 a:hover {
   color: silver;
+  text-decoration: underline;
 }
 
-a .vertical_like {
-  color: royalblue
+.vertical_like {
+  color: #15A2B8;
+}
+
+.vertical_liked {
+  color: #15A2B8;
 }
 
 a .vertical_like:hover {
-  color: orangered
+  color: #128496
+}
+
+a .vertical_liked {
+  color: #15A2B8
+}
+
+a .vertical_liked:hover {
+  color: #128496
+}
+
+.comment {
+  color: #15A2B8
 }
 
 .circle-avatar.field {

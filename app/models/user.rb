@@ -20,7 +20,9 @@ class User < ApplicationRecord
       user.provider = auth['provider']
       user.uid = auth['uid']
       user.username = auth['info']['nickname']
-      user.remote_avatar_url = "https://twitter.com/#{user.uid}/profile_image?size=original"
+      # user.remote_avatar_url = auth['info']['image']
+      # user.email = User.dummy_email(auth)
+      # user.password = Devise.friendly_token[0, 20]
     end
   end
 
@@ -37,4 +39,10 @@ class User < ApplicationRecord
   def remember_me
     true
   end
+
+  # private
+
+  # def self.dummy_email(auth)
+  #   "#{auth.uid}-#{auth.provider}@example.com"
+  # end
 end

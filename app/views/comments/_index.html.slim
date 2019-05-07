@@ -5,5 +5,5 @@
       p
         |コメント:#{comment.content}
       - if comment.user == current_user
-        p= link_to 'コメントを削除する', post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, data: { confirm: "コメントを削除します。よろしいですか？"}, class: 'btn btn-outline-primary delete'
+        p= link_to 'コメントを削除する', post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, data: { confirm: "コメントを削除します。よろしいですか？"}, class: 'btn btn-outline-info delete'
     br

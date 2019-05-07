@@ -8,15 +8,13 @@
             - unless user_signed_in?
               br
               = link_to "Lesson に登録する", new_user_registration_path, class: 'btn btn-outline-info'
-
+    .col-12
+      - if user_signed_in?
+        = link_to 'レッスンを投稿する', new_post_path, class: 'btn btn-info mb-3'
     .col-8.border-right
       h3.border-bottom ピックアップ記事
       br
-      - if user_signed_in?
-        = link_to 'レッスンを登録する', new_post_path, class: 'btn btn-info mb-3'
       .mb-3
-        = paginate @posts
-        = page_entries_info @posts
         - @posts.each do |post|
           .posts_container.py-3
             .flex_container_main.py-2
@@ -35,6 +33,10 @@
                   / いいね表示
               div.pl-3 id= "likes_buttons_#{post.id}"
                 = render partial: 'likes/like', locals: { post: post, likes: @likes }
+              .comment
+                i.far.fa-comment.fa-2x.fa-fw
+                span
+                  = post.comments_count
               .item.ml-auto
                 - if user_signed_in? && post.user_id == current_user.id
                   .post_edit
@@ -45,6 +47,9 @@
                 = link_to post.user.username, page_path(post.user_id)
               .created_at.ml-auto
                 = post.created_at
+        .container.mt-3
+        = paginate @posts
+        = page_entries_info @posts
     .col-4
       h4.border-bottom.mb-3 タグ一覧
       - @posts.each do |post|
