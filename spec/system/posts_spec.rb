@@ -3,7 +3,10 @@
 require 'rails_helper'
 
 describe '投稿管理機能', type: :system do
-  let(:user) { create(:user) }
+  user = FactoryBot.create(:user)
+  user.confirmed_at = Time.now
+  user.save
+  let(:user) { create(:user, confirmed_at: Time.now) }
   let!(:post) { create(:post, user: user) }
 
   before do
