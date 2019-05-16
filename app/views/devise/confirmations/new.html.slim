@@ -1,12 +1,15 @@
-h2
-  | 確認用のメールを再送する
-= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
-    p
-  .actions
-    = f.submit "送信"
-= render "devise/shared/links"
+.form-confirmation
+  .col-md-4.col-lg-12.mx-auto.pt-5
+    .form-wrap
+      .form-group.text-center
+        h1.h3.mb-5.font-weight-normal 確認用のメールを再送する
+      = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :put }) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        = f.hidden_field :reset_password_token
+        .form-group
+          = f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", class: "form-control"
+        br
+        .actions.my-3
+          = f.submit "再設定する", class: "btn btn-info w-100"
+        br
+      = render "devise/shared/links"

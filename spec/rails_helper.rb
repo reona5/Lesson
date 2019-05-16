@@ -10,13 +10,7 @@ require 'rspec/rails'
 require 'devise'
 require 'capybara'
 
-RSpec.configure do |config|
-  config.include Devise::Test::IntegrationHelpers, type: :system
-  config.include Warden::Test::Helpers
-  config.after :each do
-    Warden.test_reset!
-  end
-end
+Webdrivers.cache_time = 86_400
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -71,4 +65,16 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.include Warden::Test::Helpers
+  config.include Devise::Test::IntegrationHelpers, type: :system
+  config.before(:each) do |example|
+    if example.metadata[:type] == :system
+      driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
+    else
+      driven_by :rack_test
+    end
+  end
+  config.after :each do
+    Warden.test_reset!
+  end
 end
