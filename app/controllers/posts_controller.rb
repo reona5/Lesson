@@ -44,8 +44,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
-    head :no_content
+    @post = Post.find(params[:id])
+    @post_id = @post.id
+    if @post.destroy
+      render :destroy
+    end
   end
 
   private

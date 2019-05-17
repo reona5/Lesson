@@ -10,20 +10,22 @@ document.addEventListener("turbolinks:load", function() {
   });
 });
 
-document.addEventListener("turbolinks:load", function() {
-  document.querySelectorAll(".delete").forEach(function(a) {
-    a.addEventListener("ajax:success", function() {
-      var td = a.parentNode;
-      var tr = td.parentNode;
-      tr.style.display = "none";
-    });
-  });
-});
+// document.addEventListener("turbolinks:load", function() {
+//   document.querySelectorAll(".delete").forEach(function(a) {
+//     a.addEventListener("ajax:success", function() {
+//       var td = a.parentNode;
+//       var tr = td.parentNode;
+//       tr.style.display = "none";
+//     });
+//   });
+// });
 
 $(document).on("turbolinks:load", function(){
   $("#post_lesson_at").bootstrapMaterialDatePicker({
   weekStart:0,
+  shortTime: true,
   lang:"ja",
-  format:"YYYY-MM-DD HH:mm"
+  format:"YYYY-MM-DD HH:mm",
+  switchOnClick: true
   });
   });
