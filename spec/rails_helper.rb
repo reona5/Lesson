@@ -8,15 +8,10 @@ require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'devise'
-require File.expand_path('spec/support/controller_macros.rb')
+require 'capybara'
+require 'carrierwave/test/matchers'
 
-require_relative 'support/controller_macros'
-
-RSpec.configure do |config|
-  config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include ControllerMacros, type: :controller
-  config.include FactoryBot::Syntax::Methods
-end
+Webdrivers.cache_time = 86_400
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -71,4 +66,23 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.include Warden::Test::Helpers
+  config.include Devise::Test::IntegrationHelpers, type: :system
+  config.before(:each) do |example|
+    if example.metadata[:type] == :system
+      if example.metadata[:js]
+        driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
+      else
+        driven_by :rack_test
+      end
+    end
+    config.after :each do
+      Warden.test_reset!
+    end
+  end
+  config.after(:all) do
+    if Rails.env.test?
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/lesson/uploads/"])
+    end
+  end
 end

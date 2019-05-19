@@ -5,18 +5,17 @@
           .container.p-4
             p.text-white.mb-2
               |Lessonはオフライン上での授業の場を提供するサービスです。
-            - unless user_signed_in?
-              br
+            br
+            - if user_signed_in?
+              = link_to 'レッスンを投稿する', new_post_path, class: 'btn btn-outline-info'
+            - else
               = link_to "Lesson に登録する", new_user_registration_path, class: 'btn btn-outline-info'
-    .col-12
-      - if user_signed_in?
-        = link_to 'レッスンを投稿する', new_post_path, class: 'btn btn-info mb-3'
     .col-8.border-right
       h3.border-bottom ピックアップ記事
       br
       .mb-3
         - @posts.each do |post|
-          .posts_container.py-3
+          .posts_container.py-3 id="post-#{post.id}"
             .flex_container_main.py-2
               .name
                 = link_to post.name, post, class: 'font-weight-bold'
@@ -47,11 +46,11 @@
                 = link_to post.user.username, page_path(post.user_id)
               .created_at.ml-auto
                 = post.created_at
-        .container.mt-3
-        = paginate @posts
-        = page_entries_info @posts
+      .container.mt-3
+      = paginate @posts
+      = page_entries_info @posts
     .col-4
       h4.border-bottom.mb-3 タグ一覧
-      - @posts.each do |post|
-        .tag_list.mb-2
-          = render partial: 'posts/tag_list', locals: { tag_list: post.tag_list }
+      - ActsAsTaggableOn::Tag.all.each do |tag|
+        span.badge.badge-info.mr-1.mb-1.p-2
+          = link_to tag, posts_path(tag_name: tag), class: "text-white"

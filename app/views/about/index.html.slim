@@ -5,7 +5,7 @@
   p.text-white
     | Lessonとは、オフライン上で気軽に授業の場を提供するサービスです。
   - if user_signed_in?
-    = link_to 'Lesson を始める', new_post_path, class: 'btn btn-info btn-lg mt-3'
+    = link_to 'Lesson を始める', posts_path, class: 'btn btn-info btn-lg mt-3'
   - else
     = link_to "Lesson を始める", new_user_registration_path, class: 'btn btn-info btn-lg mt-3'
 br
@@ -28,7 +28,3 @@ br
         | まずは気軽にレッスンの予定を投稿してみよう！
     .col-2
       i.fas.fa-terminal.fa-5x
-/   br
-/ .container.mt-5.text-center
-/   p
-/     |aaaaaaaaaaaaaa

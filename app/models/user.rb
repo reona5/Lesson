@@ -5,6 +5,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   validates :username, presence: true, length: { maximum: 20 }
   validates :description, length: { maximum: 1000 }
+  validates :password, length: { minimum: 6 }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable, :omniauthable, omniauth_providers: [:twitter]
