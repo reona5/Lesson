@@ -11,6 +11,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     storage :file
   elsif Rails.env.test?
     storage :file
+    enable_processing :false
   else
     storage :fog
   end

@@ -51,6 +51,6 @@
       = page_entries_info @posts
     .col-4
       h4.border-bottom.mb-3 タグ一覧
-      - @posts.each do |post|
-        .tag_list.mb-2
-          = render partial: 'posts/tag_list', locals: { tag_list: post.tag_list }
+      - ActsAsTaggableOn::Tag.all.each do |tag|
+        span.badge.badge-info.mr-1.mb-1.p-2
+          = link_to tag, posts_path(tag_name: tag), class: "text-white"

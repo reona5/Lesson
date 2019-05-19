@@ -9,6 +9,7 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 require 'devise'
 require 'capybara'
+require 'carrierwave/test/matchers'
 
 Webdrivers.cache_time = 86_400
 
@@ -77,6 +78,11 @@ RSpec.configure do |config|
     end
     config.after :each do
       Warden.test_reset!
+    end
+  end
+  config.after(:all) do
+    if Rails.env.test?
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/lesson/uploads/"])
     end
   end
 end

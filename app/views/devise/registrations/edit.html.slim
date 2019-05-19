@@ -6,15 +6,15 @@
       = render "devise/shared/error_messages", resource: resource
 
       .circle-avatar.field
-        label
+        label for="user_avatar"
           | プロフィール画像
         #img_field onclick="$('#file').click()"
           - if current_user.persisted? && current_user.avatar?
             = image_tag current_user.avatar.to_s
-            = f.hidden_field :avatar_cache
+            = f.file_field :avatar, style: "display:none;"
           - else
             = image_tag "no_avatar.png"
-            = f.hidden_field :avatar_cache
+            = f.file_field :avatar, style: "display:none;"
 
         = f.file_field :avatar, style: "display:none;", id: "file"
       br
