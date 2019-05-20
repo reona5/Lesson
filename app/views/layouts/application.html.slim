@@ -39,7 +39,7 @@ html
               li.nav-item= link_to 'ログイン', new_user_session_path, class: 'nav-link'
             li.nav-item= link_to 'Lessonとは', about_index_path, class: 'nav-link'
           = search_form_for @q, class: 'form-inline' do |f|
-            .form-group.row.my-auto.ml-lg-auto
+            .form-group.row.my-auto.ml-lg-auto.mb-md-2
               .col-8
                 = f.search_field :tags_name_cont, class: "form-control mr-lg-2", placeholder: 'タグで検索'
               .col-1
