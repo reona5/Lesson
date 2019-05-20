@@ -10,7 +10,7 @@
               = link_to 'レッスンを投稿する', new_post_path, class: 'btn btn-outline-info'
             - else
               = link_to "Lesson に登録する", new_user_registration_path, class: 'btn btn-outline-info'
-    .col-8.border-right
+    .col-xs-12.col-md-8.border-right
       h3.border-bottom ピックアップ記事
       br
       .mb-3
@@ -49,7 +49,7 @@
       .container.mt-3
       = paginate @posts
       = page_entries_info @posts
-    .col-4
+    .col-xs-12.col-md-4
       h4.border-bottom.mb-3 タグ一覧
       - ActsAsTaggableOn::Tag.all.each do |tag|
         span.badge.badge-info.mr-1.mb-1.p-2

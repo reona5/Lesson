@@ -1,6 +1,6 @@
 .container
   .row
-    .col-4
+    .col-xs-12.col-md-4
       .circle-avatar.field
         - if @user.avatar?
           = image_tag @user.avatar.to_s
@@ -15,7 +15,7 @@
           tr
             / th= User.human_attribute_name(:description)
             td= @user.description
-    .col-8.border-left
+    .col-xs-12.col-md-8.border-left
       h3.border-bottom #{@user.username} さんの投稿
       br
       .mb-3

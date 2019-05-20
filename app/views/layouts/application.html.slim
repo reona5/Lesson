@@ -8,6 +8,9 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     meta name="viewport" content="width=device-width, initial-scale=1.0"
+    script crossorigin="anonymous" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    script crossorigin="anonymous" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    script crossorigin="anonymous" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
     / font awesome
     link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" rel="stylesheet" /
     / Bootstrap Material DatePicker
@@ -15,34 +18,38 @@ html
     link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /
     script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"
     script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js" type="text/javascript"
-    script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/locale/ja.js" type="text/javascript"
     script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-datetimepicker/2.7.1/js/bootstrap-material-datetimepicker.min.js" type="text/javascript";
+    script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/locale/ja.js" type="text/javascript"
   body
-    .app-title.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
+    .app-title.navbar.navbar-expand-lg.navbar-dark.fixed-top.bg-dark
       .container
         a.navbar-brand href= "/posts"
           span style=("font-size: 1.5em; color: white;")
             i.fas.fa-laptop-code
             | Lesson
-        ul.navbar-nav.mr-auto
-          - if user_signed_in?
-            / li.nav-item= strong= link_to current_user.username, edit_user_registration_path, class: 'nav-link'
-            li.nav-item= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link'
-          - else
-            li.nav-item= link_to '新規登録', new_user_registration_path, class: 'nav-link'
-            li.nav-item= link_to 'ログイン', new_user_session_path, class: 'nav-link'
-          li.nav-item= link_to 'Lessonとは', about_index_path, class: 'nav-link'
-        = search_form_for @q, class: 'form-inline.my-2.my-lg-0' do |f|
-          .form-group.row.m-auto
-            = f.search_field :tags_name_cont, class: "col-sm-8 form-control mr-sm-2", placeholder: 'タグで検索'
-            .col-sm-1
-              = f.submit class: "btn btn-outline-info my-2 my-sm-0"
-        .circle-avatar.index-field
-          = link_to edit_user_registration_path
-            - if user_signed_in? && current_user.avatar?
-              = image_tag current_user.avatar.to_s
-            - elsif user_signed_in?
-              = image_tag "no_avatar.png"
+        button.navbar-toggler aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbar" data-toggle="collapse" type="button"
+          span.navbar-toggler-icon
+        #navbar.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto
+            - if user_signed_in?
+              / li.nav-item= strong= link_to current_user.username, edit_user_registration_path, class: 'nav-link'
+              li.nav-item= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link'
+            - else
+              li.nav-item= link_to '新規登録', new_user_registration_path, class: 'nav-link'
+              li.nav-item= link_to 'ログイン', new_user_session_path, class: 'nav-link'
+            li.nav-item= link_to 'Lessonとは', about_index_path, class: 'nav-link'
+          = search_form_for @q, class: 'form-inline' do |f|
+            .form-group.row.my-auto.ml-lg-auto
+              .col-8
+                = f.search_field :tags_name_cont, class: "form-control mr-lg-2", placeholder: 'タグで検索'
+              .col-1
+                = f.submit class: "btn btn-outline-info"
+          .circle-avatar.index-field
+            = link_to edit_user_registration_path
+              - if user_signed_in? && current_user.avatar?
+                = image_tag current_user.avatar.to_s
+              - elsif user_signed_in?
+                = image_tag "no_avatar.png"
     .container.header
       - if flash.notice.present?
         .alert.alert-success= flash.notice
