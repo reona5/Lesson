@@ -16,7 +16,7 @@ module Lesson
     config.time_zone = 'Asia/Tokyo'
     config.i18n.default_locale = :ja
     config.assets.initialize_on_precompile = false
-
+    config.session_store :cache_store
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

@@ -53,4 +53,4 @@
       h4.border-bottom.mb-3 タグ一覧
       - ActsAsTaggableOn::Tag.all.each do |tag|
         span.badge.badge-info.mr-1.mb-1.p-2
-          = link_to tag, posts_path(tag_name: tag), class: "text-white"
+          = link_to tag, posts_path(tag_name: tag.name), class: "text-white"
