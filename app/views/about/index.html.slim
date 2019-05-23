@@ -1,0 +1,31 @@
+.top.text-center.bg-dark.my-4.py-5
+  span style=("font-size: 7em; color: white;")
+    i.fas.fa-laptop-code
+    | Lesson
+  p.text-white
+    | Lessonとは、オフライン上で気軽に授業の場を提供するサービスです。
+  - if user_signed_in?
+    = link_to 'Lesson を見る', posts_path, class: 'btn btn-info btn-lg mt-3'
+  - else
+    = link_to "Lesson を始める", new_user_registration_path, class: 'btn btn-info btn-lg mt-3'
+    = link_to 'Lesson を見る', posts_path, class: 'btn btn-info btn-lg mt-3 ml-2'
+br
+.container.mt-5
+  .row.justify-content-center
+    .col-xs-12.col-md-2
+      i.fas.fa-users.fa-5x
+    .col-xs-12.col-md-7
+      p.py-auto
+        | 「初心者だから、環境構築を一人でできる自信がない…」
+        br
+        | 「有識者に直接わかりやすく教えてもらいたい！」
+        br
+        | Lessonは、そのような悩みを解決するサービスです。
+      br
+    .col-xs-12.col-md-7
+      p.py-auto
+        | 技術やプログラミング言語に応じてレッスンを検索することもできます。
+        br
+        | まずは気軽にレッスンの予定を投稿してみよう！
+    .col-xs-12.col-md-2
+      i.fas.fa-terminal.fa-5x

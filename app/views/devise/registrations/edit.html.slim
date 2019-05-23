@@ -1,0 +1,52 @@
+.form-edit-profile
+  .col-md-4.mx-auto.pt-5
+    .form-group.text-center
+      h1.h3.mb-5.font-weight-normal プロフィール変更
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+
+      .circle-avatar.field
+        label for="user_avatar"
+          | プロフィール画像
+        #img_field onclick="$('#file').click()"
+          - if current_user.persisted? && current_user.avatar?
+            = image_tag current_user.avatar.to_s
+            = f.file_field :avatar, style: "display:none;"
+          - else
+            = image_tag "no_avatar.png"
+            = f.file_field :avatar, style: "display:none;"
+
+        = f.file_field :avatar, style: "display:none;", id: "file"
+      br
+      .field
+        = f.text_field :username, autofocus: true, placeholder: "ユーザ名", class: "form-control"
+      br
+      .field
+        = f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", class: "form-control"
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        div
+          | 変更確認用のメールアドレスを送信しましたので、変更を完了させて下さい。→
+          = resource.unconfirmed_email
+      br
+      .field
+        = f.text_area :description, rows: 7, placeholder: "プロフィール", class: "form-control"
+      br
+      .field
+        = f.password_field :password, placeholder: "パスワード", class: "form-control"
+      br
+      .field
+        = f.password_field :password_confirmation, placeholder: "パスワード（確認用）", class: "form-control"
+      br
+      .field
+        = f.password_field :current_password, placeholder: "現在のパスワード", class: "form-control"
+      br
+      .actions.my-3
+        = f.submit "変更する", class: "btn btn-info w-100"
+      br
+    h4.text-center
+      | 退会はこちら
+    p
+      | 全てのサービスは利用できなくなります。よろしければ退会ボタンを押してください。
+    br
+      = button_to "退会する", registration_path(resource_name), data: { confirm: "本当によろしいですか？" }, method: :delete, class: "btn btn-outline-info w-100"
+    = link_to "レッスン一覧に戻る", :back

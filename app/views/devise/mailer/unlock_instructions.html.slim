@@ -1,0 +1,10 @@
+p
+  | こんにちは
+  = @resource.username
+  | さん！
+p
+  | あなたのアカウントは現在ロックされている可能性があります。
+p
+  | ロックを解除するためには以下のボタンを押して下さい。
+p
+  = link_to 'ロック解除', unlock_url(@resource, unlock_token: @token)

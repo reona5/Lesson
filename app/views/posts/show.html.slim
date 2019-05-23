@@ -2,16 +2,41 @@ h1 レッスンの詳細
 
 .nav.justify-content-end
   = link_to 'レッスン一覧', posts_path, class: 'nav-link'
+  / いいね表示
+  div id= "likes_buttons_#{@post.id}"
+    = render partial: 'likes/like', locals: { post: @post, likes: @likes }
 table.table.table-hover
   tbody
+    tr
+      th= User.human_attribute_name(:username)
+      td= @post.user.username
     tr
       th= Post.human_attribute_name(:name)
       td= @post.name
     tr
+      th= Post.human_attribute_name(:tag_list)
+      td= render partial: 'posts/tag_list', locals: { tag_list: @post.tag_list }
+    tr
       th= Post.human_attribute_name(:description)
-      td= simple_format(h(@post.description), {}, sanitize: false, wrapper_tag: "div")
+      td= auto_link(simple_format(h(@post.description), {}, sanitize: false, wrapper_tag: "div"))
+    tr
+      th= Post.human_attribute_name(:place)
+      td= @post.place
+    tr
+      th= Post.human_attribute_name(:lesson_at)
+      td= @post.lesson_at
     tr
       th= Post.human_attribute_name(:created_at)
       td= @post.created_at
-= link_to '編集', edit_post_path, class: 'btn btn-outline-warning mr-3'
-= link_to '削除', @post, method: :delete, data: { confirm: "レッスン「#{@post.name}」を削除します。よろしいですか？"}, class: 'btn btn-outline-warning'
+- if user_signed_in? && @post.user_id == current_user.id
+  = link_to '編集', edit_post_path, class: 'btn btn-info mr-3'
+  = link_to '削除', @post, method: :delete, data: { confirm: "レッスン「#{@post.name}」を削除します。よろしいですか？"}, class: 'btn btn-outline-info'
+div
+  br
+  /! 投稿されたコメント一覧を詳細ページに表示するためのrender
+  div id= "comments_area"
+    = render partial: 'comments/index', locals: { comments: @comments }
+  - if user_signed_in?
+    br
+    /! コメント入力欄を詳細ページに表示するためのrender
+    = render partial: 'comments/form', locals: { comment: @comment, post: @post }

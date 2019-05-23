@@ -1,0 +1,49 @@
+.container
+  .row
+    .col-xs-12.col-md-4
+      .circle-avatar.field
+        - if @user.avatar?
+          = image_tag @user.avatar.to_s
+        - else
+          = image_tag "no_avatar.png"
+      br
+      table.table.table-hover
+        tbody
+          tr
+            / th= User.human_attribute_name(:username)
+            td= @user.username
+          tr
+            / th= User.human_attribute_name(:description)
+            td= @user.description
+    .col-xs-12.col-md-8.border-left
+      h3.border-bottom #{@user.username} さんの投稿
+      br
+      .mb-3
+        - @user.posts.each do |post|
+          .posts_container.py-3
+            .flex_container_main.py-2
+              .name
+                = link_to post.name, post, class: 'font-weight-bold'
+              .tag_list
+                = render partial: 'posts/tag_list', locals: { tag_list: post.tag_list }
+              .description
+                = post.description
+            .flex_container_sub
+              .index-field
+              div id= "likes_buttons_#{post.id}"
+                = render partial: 'likes/like', locals: { post: post, likes: @likes }
+                / コメント数表
+              .comment
+                i.far.fa-comment.fa-2x.fa-fw
+                span
+                  = post.comments_count
+              .item.ml-auto
+                - if user_signed_in? && post.user_id == current_user.id
+                  .post_edit
+                    = link_to '編集', edit_post_path(post), class: 'btn btn-info mr-1'
+                    = link_to '削除', post, method: :delete, remote: true, data: { confirm: "レッスン「#{post.name}」を削除します。よろしいですか？"}, class: 'btn btn-outline-info delete'
+            .flex_container_sub
+              .username
+                = link_to post.user.username, page_path(post.user_id)
+              .created_at.ml-auto
+                = post.created_at

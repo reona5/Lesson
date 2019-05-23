@@ -1,3 +1,108 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  line-height: 1.5;
+  letter-spacing: .1em;
+  text-align: justify;
+  color: #546E7A;
+}
+
+a {
+  color: #546E7A
+}
+
+a:hover {
+  color: silver;
+  text-decoration: underline;
+}
+
+.vertical_like {
+  color: #15A2B8;
+}
+
+.vertical_liked {
+  color: #15A2B8;
+}
+
+a .vertical_like:hover {
+  color: #128496
+}
+
+a .vertical_liked {
+  color: #15A2B8
+}
+
+a .vertical_liked:hover {
+  color: #128496
+}
+
+.comment {
+  color: #15A2B8
+}
+
+.circle-avatar.field {
+  text-align: center;
+}
+
+.circle-avatar.field img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.circle-avatar.index-field img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#img_field:hover {
+  transition: 0.5s ease-out;
+  opacity: 0.5;
+}
+
+.posts_container {
+  border-bottom: 1px solid rgb(230, 220, 220);
+}
+
+.flex_container_main {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: flex-start;
+  align-content: space-around;
+  overflow: hidden;
+  width: 100%;
+}
+
+.description {
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flex_container_sub {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-end;
+	align-content: space-around;
+}
+
+.footer {
+  opacity: 0.5;
+}

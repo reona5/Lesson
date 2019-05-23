@@ -1,0 +1,8 @@
+p
+  | こんにちは、
+  = @resource.username
+  | さん！
+p
+  | 以下のボタンでアカウントの有効化を完了しましょう！
+p
+  = link_to 'アカウント有効化', confirmation_url(@resource, confirmation_token: @token)
