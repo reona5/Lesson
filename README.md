@@ -19,6 +19,7 @@ URL:https://lesson-code.herokuapp.com/
   - Remember Me
 - 投稿管理機能
   - 新規登録
+    - 日付選択（Bootstrap Material DatePicker）
   - 一覧表示（kaminariによるページネーション機能）
   - 詳細表示
   - 投稿編集
@@ -40,6 +41,7 @@ URL:https://lesson-code.herokuapp.com/
 - Views
   - Bootstrap（4.3.1）
   - Slim（4.0.1）
+  - Font Awesome
 
 - Ruby（2.6.2）
 - Rails（5.2.3）
